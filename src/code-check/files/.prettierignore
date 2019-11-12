@@ -1,0 +1,17 @@
+*.js
+
+*.json
+*.md
+*.yml
+*.yaml
+
+src/polyfills.ts
+src/test.ts
+src/browserslist
+src/favicon.ico
+src/assets/
+
+src/app/css/style.css
+src/app/css/vendor.css
+src/app/css/vendor.css
+src/assets/css/**/*.css
