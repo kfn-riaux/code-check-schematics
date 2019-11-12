@@ -3,7 +3,8 @@
   "schematics": {
     "code-check": {
       "description": "A blank schematic.",
-      "factory": "./code-check/index#codeCheck"
+      "factory": "./code-check/index#codeCheck",
+      "schema": "./code-check/schema.json"
     }
   }
 }
