@@ -19,7 +19,7 @@ export function codeCheck(_options: Schema): Rule {
     return (tree: Tree, _context: SchematicContext) => {
 
         updatePackageJson(tree);
-
+        updateTsLintJson(tree);
         const sourceTemplates = url('./files');
         const sourceParametrizedTemplates = apply(sourceTemplates, [
             template({
@@ -32,9 +32,10 @@ export function codeCheck(_options: Schema): Rule {
 }
 
 function updatePackageJson(tree: Tree): void {
-    const packageJsonBuffer = tree.read('package.json');
+    const path = 'package.json';
+    const packageJsonBuffer = tree.read(path);
     if (!packageJsonBuffer) {
-        throw new SchematicsException('Not npm project');
+        throw new SchematicsException('package.json is not found.');
     }
     const packageJson = JSON.parse(packageJsonBuffer.toString());
 
@@ -48,5 +49,22 @@ function updatePackageJson(tree: Tree): void {
         ...packageJson.scripts,
         ...additionalScripts
     };
-    tree.overwrite('package.json', JSON.stringify(packageJson, null, 2));
+    tree.overwrite(path, JSON.stringify(packageJson, null, 2));
+}
+
+function updateTsLintJson(tree: Tree) {
+    const path = 'tslint.json';
+    const tslintJsonBuffer = tree.read(path);
+    if (!tslintJsonBuffer) {
+        throw new SchematicsException('tslint.json is not found.');
+    }
+    const tslintJson = JSON.parse(tslintJsonBuffer.toString());
+
+    tslintJson.extends = [
+        'tslint:recommended',
+        'tslint-config-prettier'
+    ];
+
+    tree.overwrite(path, JSON.stringify(tslintJson, null, 2));
+
 }
