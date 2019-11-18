@@ -7,11 +7,15 @@
   "properties": {
     "project": {
       "type": "string",
-      "description": "Generate in specific Angular CLI workspace project"
+      "description": "Generate in specific Angular CLI workspace project",
+      "$default": {
+        "$source": "projectName"
+      }
     },
     "style" : {
       "type": "string",
-      "description": "project stylesheet type"
+      "description": "project stylesheet type",
+      "default": "css"
     }
   }
 }
