@@ -1,7 +1,7 @@
 {
   "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
   "schematics": {
-    "code-check": {
+    "ng-add": {
       "description": "A blank schematic.",
       "factory": "./code-check/index#codeCheck",
       "schema": "./code-check/schema.json"

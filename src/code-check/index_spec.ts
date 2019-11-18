@@ -12,11 +12,11 @@ describe('code-check schematic', () => {
         appTree = await createTestApp(runner);
     });
 
-    describe('code-check', () => {
+    describe('ng-add', () => {
         let tree: Tree;
         let packageJson: any;
         beforeEach(async () => {
-            tree = await runner.runSchematicAsync('code-check', {}, appTree).toPromise();
+            tree = await runner.runSchematicAsync('ng-add', {}, appTree).toPromise();
             packageJson = JSON.parse(getFileContent(tree, 'package.json'));
         });
         it('should add devDependencies', async () => {
@@ -26,7 +26,7 @@ describe('code-check schematic', () => {
             }
         });
 
-        it('should add auto code-check setting in package.json', async () => {
+        it('should add auto ng-add setting in package.json', async () => {
             const haskySetting = packageJson['hasky'];
             const lintStagedSettings = packageJson['lint-staged'];
 
@@ -54,10 +54,10 @@ describe('code-check schematic', () => {
 
     });
 
-    describe('code-check with style param', () => {
+    describe('ng-add with style param', () => {
 
         async function getRule(style: string): Promise<any> {
-            const tree = await runner.runSchematicAsync('code-check', {style: style}, appTree).toPromise();
+            const tree = await runner.runSchematicAsync('ng-add', {style: style}, appTree).toPromise();
             const styleLintRcJson = JSON.parse(getFileContent(tree, '/.stylelintrc.json'));
             return styleLintRcJson.rules;
         }
@@ -99,5 +99,5 @@ export async function createTestApp(runner: SchematicTestRunner, appOptions = {}
     }, tree).toPromise();
 
     return runner.runExternalSchematicAsync('@schematics/angular', 'application',
-        {name: 'code-check', ...appOptions}, workspaceTree).toPromise();
+        {name: 'application', ...appOptions}, workspaceTree).toPromise();
 }
