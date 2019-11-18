@@ -51,6 +51,13 @@ describe('code-check schematic', () => {
             expect(extendsSetting).toEqual(Settings.tslintExtendsSettings);
         });
 
+        it('should add and update npm scripts', () => {
+            const scripts = packageJson.scripts;
+            for (let scriptName of Object.keys(Settings.additionalScripts)) {
+                expect(scripts[scriptName]).toEqual(Settings.additionalScripts[scriptName]);
+            }
+        });
+
 
     });
 
