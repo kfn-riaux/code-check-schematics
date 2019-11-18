@@ -11,7 +11,7 @@ import {
 import {Schema} from './schema';
 import {strings} from '@angular-devkit/core';
 import {addPackageJsonDependency} from '@schematics/angular/utility/dependencies';
-import {additionalScripts, devDependencies, haskySetting, lintStagedSetting} from './settings';
+import {additionalScripts, devDependencies, haskySetting, lintStagedSetting, tslintExtendsSettings} from './settings';
 
 // You don't have to export the function as default. You can also have more than one rule factory
 // per file.
@@ -60,10 +60,7 @@ function updateTsLintJson(tree: Tree) {
     }
     const tslintJson = JSON.parse(tslintJsonBuffer.toString());
 
-    tslintJson.extends = [
-        'tslint:recommended',
-        'tslint-config-prettier'
-    ];
+    tslintJson.extends = tslintExtendsSettings;
 
     tree.overwrite(path, JSON.stringify(tslintJson, null, 2));
 

@@ -29,4 +29,9 @@ export const devDependencies: NodeDependency[] = [
     {name: 'stylelint-config-standard', version: '^18.3.0', type: NodeDependencyType.Dev},
     {name: 'stylelint-scss', version: '^3.6.1', type: NodeDependencyType.Dev},
     {name: 'tslint-config-prettier', version: '^1.18.0', type: NodeDependencyType.Dev},
-]
+];
+
+export const tslintExtendsSettings: string[] = [
+    'tslint:recommended',
+    'tslint-config-prettier'
+];
