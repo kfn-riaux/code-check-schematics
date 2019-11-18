@@ -1,28 +1,43 @@
-# Getting Started With Schematics
+# Code Check Schematic
 
-This repository is a basic Schematic implementation that serves as a starting point to create and publish Schematics to NPM.
-
-### Testing
-
-To test locally, install `@angular-devkit/schematics-cli` globally and use the `schematics` command line tool. That tool acts the same as the `generate` command of the Angular CLI, but also has a debug mode.
-
-Check the documentation with
-```bash
-schematics --help
-```
-
-### Unit Testing
-
-`npm run test` will run the unit tests, using Jasmine as a runner and test framework.
-
-### Publishing
-
-To publish, simply do:
-
-```bash
-npm run build
-npm publish
-```
-
-That's it!
+Schematic of auto code check settings in angular workspace. This schematics set these OSS.
  
+* Prettier: code formatter
+* StyleLint: Stylesheet code check (CSS or SCSS)
+* TSLint: only prettier extends
+* hasky & lint-staged: auto run before code commit
+
+## ng add
+
+```shell script
+$ ng new <your ng ws name>
+$ cd <your ng ws>
+$ ng add @kfn-modern-dx/code-check-schematic
+```
+
+## option
+
+|option|value|default|description|
+|---|---|---|---|
+|project|project name|workspace root name|The name of the project to which settings are added.|
+|style|`css`&#124;`scss`|`css`|style sheet type. Use setting .stylelintrc.json 
+
+## npm script
+
+This schematics add these npm scripts.
+
+* `lint:ts`: Lint ts files with TSLint, same as default `lint` command.
+* `lint:style`: Lint stylesheet with StyleLint. 
+* `format`: Code format with prettier.
+
+and change the `lint` command so that tslint and style lint are executed. 
+
+## Auto code check
+
+Prettier and Lint execute before `git commit`. Developer can't commit if d'not pass code check. 
+This helps keep the repository clean.
+
+## Feature
+
+* Auto detect project stylesheet type.
+* Add stylelint settings other than CSS and SCSS.

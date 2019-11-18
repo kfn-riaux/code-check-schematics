@@ -1,16 +1,22 @@
 {
-  "name": "code-check",
-  "version": "0.0.0",
-  "description": "A blank schematics",
+  "name": "@kfn-modern-dx/code-check-schematic",
+  "version": "0.0.1",
+  "description": "Angular schematic of add auto code check settings",
   "scripts": {
     "start": " schematics .:code-check",
     "build": "tsc -p tsconfig.json",
     "test": "npm run build && jasmine src/**/*_spec.js"
   },
   "keywords": [
-    "schematics"
+    "schematics",
+    "Angular",
+    "tslint",
+    "stylelint",
+    "prettier"
   ],
-  "author": "",
+  "author": "KadoTomohiro",
+  "homepage": "https://github.com/kfn-riaux/code-check-schematics",
+  "bugs": "https://github.com/kfn-riaux/code-check-schematics/issues",
   "license": "MIT",
   "schematics": "./src/collection.json",
   "dependencies": {

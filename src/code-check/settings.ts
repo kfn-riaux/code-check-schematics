@@ -13,7 +13,7 @@ export const lintStagedSetting = {
     ]
 };
 
-export const additionalScripts = {
+export const additionalScripts: { [key: string]: string} = {
     'lint': 'npm run lint:ts && npm run lint:style',
     'lint:ts': 'ng lint',
     'lint:style': 'stylelint "src/**/*.(css|scss)"',
