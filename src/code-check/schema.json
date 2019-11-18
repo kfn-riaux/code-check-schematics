@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/schema",
   "id": "CodeCheckSchematics",
   "title": "Code checker Schema",
-  "typpe": "object,",
+  "type": "object",
   "description": "Auto Lint and Prettier into Project",
   "properties": {
     "project": {
