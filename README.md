@@ -34,6 +34,11 @@ This schematics add these npm scripts.
 
 and change the `lint` command so that tslint and style lint are executed. 
 
+All file format example.
+```shell script
+$  npm run format -- src/**/*.{ts,scss,css}
+```
+ 
 ## Auto code check
 
 Prettier and Lint execute before `git commit`. Developer can't commit if d'not pass code check. 
