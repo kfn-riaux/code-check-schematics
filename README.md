@@ -1,5 +1,7 @@
 # Code Check Schematic
 
+[![wercker status](https://app.wercker.com/status/d4569308a8ef68641442270e1f4935f6/m/master "wercker status")](https://app.wercker.com/project/byKey/d4569308a8ef68641442270e1f4935f6)
+
 Schematic of auto code check settings in angular workspace. This schematics set these OSS.
  
 * Prettier: code formatter
