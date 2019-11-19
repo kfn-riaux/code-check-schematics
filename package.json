@@ -29,6 +29,7 @@
     "typescript": "~3.5.3"
   },
   "devDependencies": {
-    "@schematics/angular": "^8.3.18"
+    "@schematics/angular": "^8.3.18",
+    "tslint": "^5.20.1"
   }
 }
