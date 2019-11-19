@@ -13,3 +13,6 @@ test:
     - script:
         name: test
         code: npm run test
+publish:
+  steps:
+    - turistforeningen/npm-publish@2.0.3

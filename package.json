@@ -1,6 +1,6 @@
 {
   "name": "@kfn-modern-dx/code-check-schematic",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Angular schematic of add auto code check settings",
   "scripts": {
     "start": " schematics .:code-check",
