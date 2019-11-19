@@ -1,7 +1,7 @@
 import {NodeDependency, NodeDependencyType} from '@schematics/angular/utility/dependencies';
 
 export const haskySetting = {
-    'hooks': {
+    hooks: {
         'pre-commit': 'lint-staged'
     }
 };

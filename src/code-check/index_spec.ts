@@ -53,18 +53,16 @@ describe('code-check schematic', () => {
 
         it('should add and update npm scripts', () => {
             const scripts = packageJson.scripts;
-            for (let scriptName of Object.keys(Settings.additionalScripts)) {
+            for (const scriptName of Object.keys(Settings.additionalScripts)) {
                 expect(scripts[scriptName]).toEqual(Settings.additionalScripts[scriptName]);
             }
         });
-
-
     });
 
     describe('ng-add with style param', () => {
 
         async function getRule(style: string): Promise<any> {
-            const tree = await runner.runSchematicAsync('ng-add', {style: style}, appTree).toPromise();
+            const tree = await runner.runSchematicAsync('ng-add', {style}, appTree).toPromise();
             const styleLintRcJson = JSON.parse(getFileContent(tree, '/.stylelintrc.json'));
             return styleLintRcJson.rules;
         }
@@ -86,13 +84,17 @@ describe('code-check schematic', () => {
         it('should exist scss specific setting in .stylelintrc.json when style is scss', async () => {
             const rules = await getRule('scss');
 
-            scssRules.forEach(ruleName => expect(rules[ruleName]).toBeDefined());
+            for (const ruleName of scssRules) {
+                expect(rules[ruleName]).toBeDefined();
+            }
         });
 
         it('should not exist scss specific setting in .stylelintrc.json when style is css', async () => {
             const rules = await getRule('css');
 
-            scssRules.forEach(ruleName => expect(rules[ruleName]).toBeUndefined());
+            for (const ruleName of scssRules) {
+                expect(rules[ruleName]).toBeUndefined();
+            }
         });
     });
 });
@@ -102,7 +104,7 @@ export async function createTestApp(runner: SchematicTestRunner, appOptions = {}
     const workspaceTree = await runner.runExternalSchematicAsync('@schematics/angular', 'workspace', {
         name: 'workspace',
         version: '8.3.17',
-        newProjectRoot: 'projects',
+        newProjectRoot: 'projects'
     }, tree).toPromise();
 
     return runner.runExternalSchematicAsync('@schematics/angular', 'application',

@@ -1,3 +1,4 @@
+import {strings} from '@angular-devkit/core';
 import {
     apply,
     mergeWith,
@@ -8,15 +9,14 @@ import {
     Tree,
     url
 } from '@angular-devkit/schematics';
-import {strings} from '@angular-devkit/core';
 import {addPackageJsonDependency} from '@schematics/angular/utility/dependencies';
-import * as Settings from './settings';
 import {Schema} from './schema';
+import * as Settings from './settings';
 
 // You don't have to export the function as default. You can also have more than one rule factory
 // per file.
-export function codeCheck(_options: Schema): Rule {
-    return (tree: Tree, _context: SchematicContext) => {
+export function codeCheck(options: Schema): Rule {
+    return (tree: Tree, context: SchematicContext) => {
 
         addDevDependencies(tree);
         updatePackageJson(tree);
@@ -24,16 +24,16 @@ export function codeCheck(_options: Schema): Rule {
         const sourceTemplates = url('./files');
         const sourceParametrizedTemplates = apply(sourceTemplates, [
             template({
-                ..._options,
-                ...strings,
+                ...options,
+                ...strings
             }),
         ]);
-        return mergeWith(sourceParametrizedTemplates)(tree, _context);
+        return mergeWith(sourceParametrizedTemplates)(tree, context);
     };
 }
 
 function addDevDependencies(tree: Tree) {
-    for (let devDependency of Settings.devDependencies) {
+    for (const devDependency of Settings.devDependencies) {
         addPackageJsonDependency(tree, devDependency);
     }
 }
@@ -49,7 +49,7 @@ function updatePackageJson(tree: Tree): void {
     packageJson['lint-staged'] = Settings.lintStagedSetting;
     packageJson.scripts = {
         ...packageJson.scripts,
-        ...Settings.additionalScripts
+        ...Settings.additionalScripts,
     };
     tree.overwrite(path, JSON.stringify(packageJson, null, 2));
 }
